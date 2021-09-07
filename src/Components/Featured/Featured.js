@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-
+import axios from "axios";
 import "./Featured.scss";
 const Featured = ({ type }) => {
+  const [content, setContent] = useState({});
+  useEffect(() => {
+    const getContent = async () => {
+      try {
+        const res = await axios.get();
+      } catch (error) {}
+    };
+    getContent();
+  }, []);
   return (
     <div className="featured">
       {type && (
         <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
             <option value="adventure">Adventure</option>
