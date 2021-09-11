@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import "./Navbar.scss";
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signOut } from "../Redux/authSlice";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+  const dispatch = useDispatch();
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
@@ -40,7 +43,7 @@ const Navbar = () => {
             <ArrowDropDown className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={() => dispatch(signOut())}>Logout</span>
             </div>
           </div>
         </div>

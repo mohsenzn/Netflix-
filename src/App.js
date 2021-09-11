@@ -4,14 +4,16 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/login/Login";
 import Register from "./Pages/register/Register";
 import Watch from "./Pages/watch/Watch";
+import { useSelector } from "react-redux";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+
 const App = () => {
-  const user = true;
+  const user = useSelector((state) => state.auth.user);
   return (
     <>
       <Router>
